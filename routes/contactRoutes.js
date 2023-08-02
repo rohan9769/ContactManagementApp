@@ -1,5 +1,5 @@
 const express = require('express')
-const { getContacts, createContact, getContact } = require('../controllers/contactController')
+const { getContacts, createContact, getContact, updateContact } = require('../controllers/contactController')
 
 const router = express.Router()
 
@@ -13,9 +13,7 @@ router.route('/').post(createContact)
 router.route('/:id').get(getContact)
 
 // Route to update contact
-router.route('/:id').put((req,res)=>{
-    res.status(200).json({message:`Update contacts for ${req.params.id}`})
-})
+router.route('/:id').put(updateContact)
 
 // Route to delete a contact
 router.route('/:id').delete((req,res)=>{
