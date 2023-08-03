@@ -10,6 +10,7 @@ app.use(express.json())
 
 app.use('/api/contacts',require('./routes/contactRoutes'))
 app.use('/api/users',require('./routes/userRoutes'))
+app.use('/api/random',require('./routes/randomRoutes'))
 
 //Created a custom error handling middleware
 app.use(errorHandler)
