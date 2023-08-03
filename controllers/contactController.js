@@ -6,9 +6,10 @@ const Contact = require('../models/contactModel')
 //@desc Get all contacts
 //@route GET /api/contacts
 //@access public
-const getContacts = (req,res) =>{
-    res.staus(200).json({message:`Get all contacts`})
-}
+const getContacts = asyncHandler(async(req,res) =>{
+    const contacts = await Contact.find()
+    res.staus(200).json(contacts)
+})
 
 //@desc Create new contact
 //@route POST /api/contacts
