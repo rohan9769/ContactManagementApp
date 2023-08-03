@@ -25,5 +25,12 @@ const getContact = (req,res) =>{
 const updateContact = (req,res)=>{
     res.status(200).json({message:`Update contacts for ${req.params.id}`})
 }
-module.exports = {getContacts,createContact,getContact,updateContact}
+
+//@desc Update a particular contact
+//@route PUT /api/contacts/:id
+//@access public
+const deleteContact = (req,res)=>{
+    res.status(200).json({message:`Delete contacts for ${req.params.id}`})
+}
+module.exports = {getContacts,createContact,getContact,updateContact,deleteContact}
 
