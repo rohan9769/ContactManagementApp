@@ -8,7 +8,7 @@ const Contact = require('../models/contactModel')
 //@access public
 const getContacts = asyncHandler(async(req,res) =>{
     const contacts = await Contact.find()
-    res.staus(200).json(contacts)
+    res.status(200).json(contacts)
 })
 
 //@desc Create new contact
@@ -61,11 +61,18 @@ const updateContact = asyncHandler(async (req,res)=>{
     res.status(200).json(updatedContact)
 })
 
-//@desc Update a particular contact
-//@route PUT /api/contacts/:id
+//@desc Delete a particular contact
+//@route DELETE /api/contacts/:id
 //@access public
 const deleteContact = asyncHandler(async (req,res)=>{
-    res.status(200).json({message:`Delete contacts for ${req.params.id}`})
+    //Fetching the contact first
+    const contact = await Contact.findById(req.params.id)
+    if(!contact){
+        res.status(404)
+        throw new Error("Contact not found")
+    }
+    await Contact.deleteOne();
+    res.status(200).json(contact)
 })
 module.exports = {getContacts,createContact,getContact,updateContact,deleteContact}
 
