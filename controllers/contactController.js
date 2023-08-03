@@ -9,14 +9,15 @@ const getContacts = (req,res) =>{
 //@route POST /api/contacts
 //@access public
 const createContact = (req,res) =>{
-    res.staus(201).json({message:`Create new contact`})
+    console.log(req.body)
+    res.status(201).json({message:`Create new contact`})
 }
 
 //@desc Get a particular contact by ID
 //@route GET /api/contacts/:id
 //@access public
 const getContact = (req,res) =>{
-    res.staus(200).json({message:`Get contact for ${req.params.id}`})
+    res.status(200).json({message:`Get contact for ${req.params.id}`})
 }
 
 //@desc Update a particular contact
